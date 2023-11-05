@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRUTAS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 0.5em;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .producto {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            max-width: 250px;
+            width: 100%;
+        }
+
+        .producto img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn-comprar {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-comprar:hover {
+            background-color: #45a049;
+        }
+
+        .carrito {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+
+        .carrito:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Frutas</h1>
+    </header>
+
+    <nav>
+        <a href="productos.html">Menu</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="producto">
+            <img src="arandanos.jpg" alt="arandanos">
+            <h2>Arandanos</h2>
+            <p>Arandanos agridulces. Precio: $400.000/10kg</p>
+            <button class="btn-comprar">Agregar al Carrito</button>
+        </div>
+
+        <div class="producto">
+            <img src="platanos.jpg" alt="platanos">
+            <h2>Plátano</h2>
+            <p>Plátanos maduros y dulces. Precio: $150.000/50kg</p>
+            <button class="btn-comprar">Agregar al Carrito</button>
+        </div>
+
+        <div class="producto">
+            <img src="manzanas.jpg" alt="manzanas">
+            <h2>Manzanas</h2>
+            <p>Deliciosas manzanas frescas . Precio: $150.000/100uds</p>
+            <button class="btn-comprar">Agregar al Carrito</button>
+        </div>
+
+
+    <div class="carrito">
+        Carrito de Compras: $<span id="total">0.00</span>
+    </div>
+
+    <script>
+        const botonesComprar = document.querySelectorAll('.btn-comprar');
+        const carrito = document.querySelector('.carrito');
+        let total = 0;
+
+        botonesComprar.forEach((boton) => {
+            boton.addEventListener('click', () => {
+                total += boton.parentElement.querySelector('p').textContent.match(/\d+\.\d+/)[0] * 1;
+                document.getElementById('total').textContent = total.toFixed(2);
+                carrito.style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+
+</html>

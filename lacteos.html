@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HORTALIZAS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 0.5em;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .producto {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            max-width: 250px;
+            width: 100%;
+        }
+
+        .producto img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn-comprar {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-comprar:hover {
+            background-color: #45a049;
+        }
+
+        .carrito {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+
+        .carrito:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Lacteos</h1>
+    </header>
+
+    <nav>
+        <a href="productos.html">Menu</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="producto">
+            <img src="lechee.jpg" alt="Leche entera">
+            <h2>Leche entera</h2>
+            <p>Leche cremosa. Precio: $200.000/100litros</p>
+            <button class="btn-comprar">Agregar al Carrito</button>
+        </div>
+
+       <div class="producto">
+            <img src="lechea.jpg" alt="Leche de almendras">
+            <h2>Leche de almendras</h2>
+            <p>Directo del campo. Precio: $450.000/50litros</p>
+            <button class="btn-comprar">Agregar al Carrito</button>
+        </div>
+
+       <div class="producto">
+            <img src="queso7.jpg" alt="queso 7">
+            <h2>Queso siete cueros</h2>
+            <p>Calcio para tu cuerpo. Precio: $350.000/10kg</p>
+            <button class="btn-comprar">Agregar al Carrito</button>
+        </div>
+
+       <div class="producto">
+            <img src="quesom.jpg" alt="queso mozzarella">
+            <h2>Queso mozzarella</h2>
+            <p>Queso suave y lechoso. Precio: $200.000/10kg</p>
+            <button class="btn-comprar">Agregar al Carrito</button>
+        </div>
+
+
+       <div class="producto">
+            <img src="quesoc.jpg" alt="queso crema">
+            <h2>Queso crema</h2>
+            <p>Perfecto para tus galletas, tostadas y más. Precio: $200.000/10kg</p>
+            <button class="btn-comprar">Agregar al Carrito</button>
+        </div>
+
+
+       <div class="producto">
+            <img src="huevosc.jpg" alt="huevos">
+            <h2>Huevos campecinos</h2>
+            <p>	Directamente de la granja. Precio: $350.000/500uds</p>
+            <button class="btn-comprar">Agregar al Carrito</button>
+        </div>
+
+
+    <div class="carrito">
+        Carrito de Compras: $<span id="total">0.00</span>
+    </div>
+
+    <script>
+        const botonesComprar = document.querySelectorAll('.btn-comprar');
+        const carrito = document.querySelector('.carrito');
+        let total = 0;
+
+        botonesComprar.forEach((boton) => {
+            boton.addEventListener('click', () => {
+                total += boton.parentElement.querySelector('p').textContent.match(/\d+\.\d+/)[0] * 1;
+                document.getElementById('total').textContent = total.toFixed(2);
+                carrito.style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+
+</html>
